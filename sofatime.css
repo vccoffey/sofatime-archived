@@ -1,10 +1,14 @@
+.sofatime {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}
+
 .sofatime span {
-  display: inline-block; /* inline-block allows min-width set by js so width does not change on 24h toggle */
+  display: inline-block; /* inline-block allows min-width */
   font-weight: bold;
   min-width: 16ch;
 }
-
-
 
 .sofatime-error {
   background-color: #ffdddd;
@@ -14,11 +18,17 @@
 }
 
 .sofatime-24h-wrapper {
-  display: inline-block;
-  background: blue;
+  display: inline-flex;
+  background: #d9d9d9;
+
   height: 20px;
   border-radius: 20px;
-  padding-right: 10px;
+  font-weight: bold;
+  vertical-align: text-top;
+  align-items: center;
+}
+.sofatime-24h-wrapper p {
+  padding: 2px 6px 0 2px;
 }
 
 
@@ -35,9 +45,9 @@
 .sofatime-24h-label {
   cursor: pointer;
   text-indent: -9999px;
-  width: 38px; /*was 200px*/
-  height: 20px; /*was 100px*/
-  background: grey;
+  width: 30px; /*was 200px*/
+  height: 16px; /*was 100px*/
+  background: #324a70;
   display: inline-block;
   border-radius: 20px; /*was 100px*/
   position: relative;
@@ -49,8 +59,8 @@
   position: absolute;
   top: 1px;
   left: 1px;
-  width: 18px; /*was 90px*/
-  height: 18px; /*was 90px*/
+  width: 14px; /*was 90px*/
+  height: 14px; /*was 90px*/
   background: #fff;
   border-radius: 18px;
   transition: 0.2s;
@@ -58,7 +68,7 @@
 
 /*input:checked + label {*/
 .sofatime-24h-checkbox:checked + .sofatime-24h-label {
-  background: #bada55;
+  background: #5c8bd6;
 }
 
 /*input:checked + label:after {*/
@@ -69,14 +79,5 @@
 
 /*label:active:after {*/
 .sofatime-24h-label:active:after {
-  width: 25px; /*was 130px*/
+  width: 18px; /*was 130px*/
 }
-
-// centering
-/*body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-*/

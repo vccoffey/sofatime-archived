@@ -129,6 +129,7 @@ function sofatime_shortcode_function($atts, $content = null) {
   return '<div class="sofatime"><form action="#">
             <span>'.$content.'</span>
             <div class = "sofatime-24h-wrapper">
+              <p>24h</p>
               <input type=checkbox class="sofatime-24h-checkbox" id="sofatime-24h-'.$GLOBALS['sofatime_id_incrementer'].'">
               <label class = "sofatime-24h-label" for="sofatime-24h-'.$GLOBALS['sofatime_id_incrementer'].'">24h</label>
             </div>
