@@ -22,8 +22,8 @@ jQuery(document).ready(function () {
     setTimeout(function(){ sofatimeAddLocalTimeToOptionNames( s24h ) }, 900);
   });
   sofatimeCheckLocalTimezoneIsInList();
-  sofatimeChangeAll(); // sets min-width with 12h wider timestring (should refactor this)
-  sofatimeChangeAll( undefined, !is12Hour() );
+  // sofatimeChangeAll(); // sets min-width with 12h wider timestring (should refactor this)
+  sofatimeChangeAll( undefined, localIs24Hour() );
   sofatimeAddLocalTimeToOptionNames();
 });
 
@@ -94,9 +94,9 @@ function sofatimeChangeAll(tz = dayjs.tz.guess(), s24h = false ) {
       var datetimeSpan = jQuery( this ).find("span")
       var thisDateFormatted = dayjs( jQuery( this ).data('datetime') ).tz(tz)
       datetimeSpan.text( thisDateFormatted.format(format) );
-      if( parseInt( datetimeSpan.css("width") ) > parseInt( datetimeSpan.css("min-width") ) ) {
-        datetimeSpan.css("min-width", datetimeSpan.css("width") );
-      }
+      // if( parseInt( datetimeSpan.css("width") ) > parseInt( datetimeSpan.css("min-width") ) ) {
+      //   datetimeSpan.css("min-width", datetimeSpan.css("width") );
+      // }
       jQuery( this ).find(".sofatimezone-select").val( tz );
       jQuery( this ).find('input[type="checkbox"]').prop('checked', s24h);
     }
@@ -118,8 +118,8 @@ function isValidTimeZone(tz) {
 }
 
 // https://stackoverflow.com/questions/27647918/detect-with-javascript-if-users-machine-is-using-12-hour-clock-am-pm-or-24-cl
-function is12Hour(locale = navigator.language) {
-  return !!new Intl.DateTimeFormat(locale, { hour: 'numeric' }).format(0).match(/\s/);
+function localIs24Hour(locale = navigator.language) {
+  return !new Intl.DateTimeFormat(locale, { hour: 'numeric' }).format(0).match(/\s/);
 }
 
 // adapted from solution by mrnateriver

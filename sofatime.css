@@ -1,6 +1,7 @@
 .sofatime span {
   display: inline-block; /* inline-block allows min-width set by js so width does not change on 24h toggle */
   font-weight: bold;
+  min-width: 16ch;
 }
 
 
