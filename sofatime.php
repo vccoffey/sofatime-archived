@@ -13,13 +13,12 @@ add_action('wp_enqueue_scripts', 'sofatime_script_enqueue');
 add_action( 'init', 'sofatime_register_shortcodes');
 
 function sofatime_script_enqueue() {
-  $sofatimejs_url = plugin_dir_url(__FILE__).'sofatime.js';
-  $sofatime_css_url = plugin_dir_url(__FILE__).'sofatime.css';
-  wp_enqueue_script('dayjs', "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.5/dayjs.min.js");
-  wp_enqueue_script('dayjs-utc', "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.5/plugin/utc.min.js");
-  wp_enqueue_script('dayjs-tz', "https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.5/plugin/timezone.min.js");
-  wp_enqueue_script('sofatime', $sofatimejs_url );
-  wp_enqueue_style('sofatime-css', $sofatime_css_url );
+  $plugin_dir = plugin_dir_url(__FILE__);
+  wp_enqueue_script('dayjs', $plugin_dir."dayjs-1.9.5/dayjs.min.js");
+  wp_enqueue_script('dayjs-utc', $plugin_dir."dayjs-1.9.5/plugin/utc.min.js");
+  wp_enqueue_script('dayjs-tz', $plugin_dir."dayjs-1.9.5/plugin/timezone.min.js");
+  wp_enqueue_script('sofatime', $plugin_dir."sofatime.js");
+  wp_enqueue_style('sofatime-css', $plugin_dir."sofatime.css" );
 }
 
 function sofatime_register_shortcodes(){
@@ -129,9 +128,9 @@ function sofatime_shortcode_function($atts, $content = null) {
   return '<div class="sofatime"><form action="#">
             <span>'.$content.'</span>
             <div class = "sofatime-24h-wrapper">
-              <p>24h</p>
               <input type=checkbox class="sofatime-24h-checkbox" id="sofatime-24h-'.$GLOBALS['sofatime_id_incrementer'].'">
               <label class = "sofatime-24h-label" for="sofatime-24h-'.$GLOBALS['sofatime_id_incrementer'].'">24h</label>
+              <p>24h</p>
             </div>
             <div class = "sofatime-select-wrapper">'.$sofatimezone_select.'</div>
           </form></div>';
