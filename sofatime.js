@@ -19,11 +19,12 @@ jQuery(document).ready(function () {
     var tzValue = jQuery( this ).closest('.sofatime').find(".sofatimezone-select").val();
     var s24h = this.checked
     setTimeout(function(){ sofatimeChangeAll( tzValue, s24h ); }, 0)
-    setTimeout(function(){ sofatimeAddLocalTimeToOptionNames( s24h ) }, 10);
+    // setTimeout(function(){ sofatimeAddLocalTimeToOptionNames( s24h ) }, 10);
   });
   sofatimeCheckLocalTimezoneIsInList();
   sofatimeChangeAll( undefined, localIs24Hour() );
-  sofatimeAddLocalTimeToOptionNames();
+  // sofatimeAddLocalTimeToOptionNames();
+  sofatimeAddUTCOffsetToOptionNames();
 });
 
 function sofatimeCheckLocalTimezoneIsInList() {
@@ -53,7 +54,19 @@ function  sofatimeAddLocalTimeToOptionNames(s24h = false) {
     }
   });
 }
-
+function  sofatimeAddUTCOffsetToOptionNames() {
+  jQuery( ".sofatime" ).each(function( index ) {
+    if(jQuery( this ).data('datetime')) {
+      var thisDayjs = dayjs( jQuery( this ).data('datetime') );
+      jQuery( this ).find('option').each(function( index, option ) {
+        var optionName = jQuery( this ).html()
+        var localTimeString = thisDayjs.tz( option.value ).format( "Z" )
+        // jQuery( this ).html( "UTC" + localTimeString + " " + optionName)
+        jQuery( this ).append( " (UTC" + localTimeString + ")")
+      })
+    }
+  });
+}
 
 function sofatimeInitializeStrings() {
   var altTZnames = {
