@@ -17,6 +17,10 @@
   display: none;
 }
 
+.sofatimezone-select {
+  max-width: 300px;
+}
+
 .sofatime-24h-wrapper {
   display: inline-flex;
   background: #d9d9d9;
