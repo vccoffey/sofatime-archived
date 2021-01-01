@@ -1,3 +1,3 @@
 # sofatime
-Wordpress plugin to change times and dates to user's local timezone
+Wordpress plugin that allos the use of a shortcode to display a date and time in user selected timezones. 
 
