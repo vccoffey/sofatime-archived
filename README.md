@@ -1,5 +1,5 @@
 # sofatime Wordpress plugin
-### use of a shortcode to display a date and time in user's local or chosen timezone
+### use a shortcode to display a date and time in user's local or chosen timezone
 
 #### HOW TO USE:
 Use the installed shortcode [sofatime] to enclose a ISO 8601 date and time, followed by a valid timezone name.
